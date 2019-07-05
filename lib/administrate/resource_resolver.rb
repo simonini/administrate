@@ -35,7 +35,13 @@ module Administrate
     end
 
     def controller_path_parts
-      controller_path.split("/")[1..-1].map(&:singularize)
+      controller_path.split("/")[1..-1].map do |path|
+        if path == 'shops'
+          path
+        else
+          path.singularize
+        end
+      end
     end
 
     attr_reader :controller_path
